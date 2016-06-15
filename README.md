@@ -1,6 +1,6 @@
-# rpi2-gen-image
+# rpi3-gen-image
 ## Introduction
-`rpi2-gen-image.sh` is an advanced Debian Linux bootstrapping shell script for generating Debian OS images for the Raspberry 2 (RPi2) computer. The script at this time only supports the bootstrapping of the current stable Debian 8 "jessie" release.
+`rpi3-gen-image.sh` is an advanced Debian Linux bootstrapping shell script for generating Debian OS images for the Raspberry 2 (RPi2) computer. The script at this time only supports the bootstrapping of the current stable Debian 8 "jessie" release.
 
 ## Build dependencies
 The following list of Debian packages must be installed on the build system because they are essentially required for the bootstrapping process. The script will check if all required packages are installed and missing packages will be installed automatically if confirmed by the user.
@@ -8,20 +8,20 @@ The following list of Debian packages must be installed on the build system beca
   ```debootstrap debian-archive-keyring qemu-user-static binfmt-support dosfstools rsync bmap-tools whois git```
 
 ## Command-line parameters
-The script accepts certain command-line parameters to enable or disable specific OS features, services and configuration settings. These parameters are passed to the `rpi2-gen-image.sh` script via (simple) shell-variables. Unlike environment shell-variables (simple) shell-variables are defined at the beginning of the command-line call of the `rpi2-gen-image.sh` script.
+The script accepts certain command-line parameters to enable or disable specific OS features, services and configuration settings. These parameters are passed to the `rpi3-gen-image.sh` script via (simple) shell-variables. Unlike environment shell-variables (simple) shell-variables are defined at the beginning of the command-line call of the `rpi3-gen-image.sh` script.
 
 #####Command-line examples:
 ```shell
-ENABLE_UBOOT=true ./rpi2-gen-image.sh
-ENABLE_CONSOLE=false ENABLE_IPV6=false ./rpi2-gen-image.sh
-ENABLE_WM=xfce4 ENABLE_FBTURBO=true ENABLE_MINBASE=true ./rpi2-gen-image.sh
-ENABLE_HARDNET=true ENABLE_IPTABLES=true /rpi2-gen-image.sh
-APT_SERVER=ftp.de.debian.org APT_PROXY="http://127.0.0.1:3142/" ./rpi2-gen-image.sh
-ENABLE_MINBASE=true ./rpi2-gen-image.sh
-BUILD_KERNEL=true ENABLE_MINBASE=true ENABLE_IPV6=false ./rpi2-gen-image.sh
-BUILD_KERNEL=true KERNELSRC_DIR=/tmp/linux ./rpi2-gen-image.sh
-ENABLE_MINBASE=true ENABLE_REDUCE=true ENABLE_MINGPU=true BUILD_KERNEL=true ./rpi2-gen-image.sh
-ENABLE_CRYPTFS=true CRYPTFS_PASSWORD=changeme EXPANDROOT=false ENABLE_MINBASE=true ENABLE_REDUCE=true ENABLE_MINGPU=true BUILD_KERNEL=true ./rpi2-gen-image.sh
+ENABLE_UBOOT=true ./rpi3-gen-image.sh
+ENABLE_CONSOLE=false ENABLE_IPV6=false ./rpi3-gen-image.sh
+ENABLE_WM=xfce4 ENABLE_FBTURBO=true ENABLE_MINBASE=true ./rpi3-gen-image.sh
+ENABLE_HARDNET=true ENABLE_IPTABLES=true /rpi3-gen-image.sh
+APT_SERVER=ftp.de.debian.org APT_PROXY="http://127.0.0.1:3142/" ./rpi3-gen-image.sh
+ENABLE_MINBASE=true ./rpi3-gen-image.sh
+BUILD_KERNEL=true ENABLE_MINBASE=true ENABLE_IPV6=false ./rpi3-gen-image.sh
+BUILD_KERNEL=true KERNELSRC_DIR=/tmp/linux ./rpi3-gen-image.sh
+ENABLE_MINBASE=true ENABLE_REDUCE=true ENABLE_MINGPU=true BUILD_KERNEL=true ./rpi3-gen-image.sh
+ENABLE_CRYPTFS=true CRYPTFS_PASSWORD=changeme EXPANDROOT=false ENABLE_MINBASE=true ENABLE_REDUCE=true ENABLE_MINGPU=true BUILD_KERNEL=true ./rpi3-gen-image.sh
 ```
 
 #### APT settings:
@@ -35,7 +35,7 @@ Set Proxy server address. Using a local Proxy-Cache like `apt-cacher-ng` will sp
 A comma separated list of additional packages to be installed during bootstrapping.
 
 #### General system settings:
-##### `HOSTNAME`="rpi2-jessie"
+##### `HOSTNAME`="rpi3-jessie"
 Set system host name. It's recommended that the host name is unique in the corresponding subnet.
 
 ##### `PASSWORD`="raspberry"
@@ -125,7 +125,7 @@ Install and enable D-Bus message bus. Please note that systemd should work witho
 Install Xorg open-source X Window System.
 
 ##### `ENABLE_WM`=""
-Install a user defined window manager for the X Window System. To make sure all X related package dependencies are getting installed `ENABLE_XORG` will automatically get enabled if `ENABLE_WM` is used. The `rpi2-gen-image.sh` script has been tested with the following list of window managers: `blackbox`, `openbox`, `fluxbox`, `jwm`, `dwm`, `xfce4`, `awesome`.
+Install a user defined window manager for the X Window System. To make sure all X related package dependencies are getting installed `ENABLE_XORG` will automatically get enabled if `ENABLE_WM` is used. The `rpi3-gen-image.sh` script has been tested with the following list of window managers: `blackbox`, `openbox`, `fluxbox`, `jwm`, `dwm`, `xfce4`, `awesome`.
 
 #### Advanced system features:
 ##### `ENABLE_MINBASE`=false
@@ -286,14 +286,14 @@ Debian custom packages, i.e. those not in the debian repositories, can be instal
 Scripts in the custom.d directory will be executed after all other installation is complete but before the image is created.
 
 ## Logging of the bootstrapping process
-All information related to the bootstrapping process and the commands executed by the `rpi2-gen-image.sh` script can easily be saved into a logfile. The common shell command `script` can be used for this purpose:
+All information related to the bootstrapping process and the commands executed by the `rpi3-gen-image.sh` script can easily be saved into a logfile. The common shell command `script` can be used for this purpose:
 
 ```shell
-script -c 'APT_SERVER=ftp.de.debian.org ./rpi2-gen-image.sh' ./build.log
+script -c 'APT_SERVER=ftp.de.debian.org ./rpi3-gen-image.sh' ./build.log
 ```
 
 ## Flashing the image file
-After the image file was successfully created by the `rpi2-gen-image.sh` script it can be copied to the microSD card that will be used by the RPi2 computer. This can be performed by using the tools `bmaptool` or `dd`. Using `bmaptool` will probably speed-up the copy process because `bmaptool` copies more wisely than `dd`.
+After the image file was successfully created by the `rpi3-gen-image.sh` script it can be copied to the microSD card that will be used by the RPi2 computer. This can be performed by using the tools `bmaptool` or `dd`. Using `bmaptool` will probably speed-up the copy process because `bmaptool` copies more wisely than `dd`.
 
 #####Flashing examples:
 ```shell
