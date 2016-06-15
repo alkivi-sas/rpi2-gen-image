@@ -12,8 +12,8 @@ chroot_exec wget http://ftp.fr.debian.org/debian/pool/main/p/python-backports-ab
 chroot_exec dpkg -i /tmp/python-backports.deb
 chroot_exec wget http://ftp.fr.debian.org/debian/pool/main/p/python-tornado/python-tornado_4.3.0-2_armhf.deb -O /tmp/python-tornado.deb
 chroot_exec dpkg -i /tmp/python-tornado.deb
-chroot_exec wget http://repo.saltstack.com/apt/debian/latest/salt-common_2016.3.0+ds-1_all.deb -O /tmp/salt-common.deb
+chroot_exec wget http://repo.saltstack.com/apt/debian/latest/salt-common_2016.3.1+ds-1_all.deb -O /tmp/salt-common.deb
 chroot_exec dpkg -i /tmp/salt-common.deb
-chroot_exec wget http://repo.saltstack.com/apt/debian/latest/salt-minion_2016.3.0+ds-1_all.deb -O /tmp/salt-minion.deb
+chroot_exec wget http://repo.saltstack.com/apt/debian/latest/salt-minion_2016.3.1+ds-1_all.deb -O /tmp/salt-minion.deb
 chroot_exec dpkg -i /tmp/salt-minion.deb
 

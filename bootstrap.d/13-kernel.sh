@@ -53,9 +53,6 @@ if [ "$ENABLE_INITRAMFS" = true ] ; then
   echo "initramfs initramfs-${KERNEL_VERSION} followkernel" >> "${BOOTDIR}/config.txt"
 fi
 
-# Create firmware configuration and cmdline symlinks
-ln -sf firmware/config.txt "${R}/boot/config.txt"
-ln -sf firmware/cmdline.txt "${R}/boot/cmdline.txt"
 
 # Install and setup kernel modules to load at boot
 mkdir -p "${R}/lib/modules-load.d/"

@@ -490,8 +490,8 @@ mkfs.ext4 "$ROOT_LOOP"
 mkdir -p "$BUILDDIR/mount"
 mount "$ROOT_LOOP" "$BUILDDIR/mount"
 
-mkdir -p "$BUILDDIR/mount/boot/firmware"
-mount "$FRMW_LOOP" "$BUILDDIR/mount/boot/firmware"
+mkdir -p "$BUILDDIR/mount/boot"
+mount "$FRMW_LOOP" "$BUILDDIR/mount/boot"
 
 # Copy all files from the chroot to the loop device mount point directory
 rsync -a "${R}/" "$BUILDDIR/mount/"

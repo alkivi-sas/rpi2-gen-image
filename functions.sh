@@ -20,7 +20,7 @@ cleanup (){
   umount -l "${R}/proc" 2> /dev/null
   umount -l "${R}/sys" 2> /dev/null
   umount -l "${R}/dev/pts" 2> /dev/null
-  umount "$BUILDDIR/mount/boot/firmware" 2> /dev/null
+  umount "$BUILDDIR/mount/boot" 2> /dev/null
   umount "$BUILDDIR/mount" 2> /dev/null
   cryptsetup close "${CRYPTFS_MAPPING}" 2> /dev/null
   losetup -d "$ROOT_LOOP" 2> /dev/null
