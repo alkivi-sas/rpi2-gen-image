@@ -54,7 +54,7 @@ BUILDDIR="${BASEDIR}/build"
 # Chroot directories
 R="${BUILDDIR}/chroot"
 ETCDIR="${R}/etc"
-BOOTDIR="${R}/boot/firmware"
+BOOTDIR="${R}/boot"
 KERNELDIR="${R}/usr/src/linux"
 
 # Firmware directory: Blank if download from github
@@ -157,7 +157,7 @@ APT_INCLUDES=${APT_INCLUDES:=""}
 APT_INCLUDES="${APT_INCLUDES},apt-transport-https,apt-utils,ca-certificates,debian-archive-keyring,dialog,sudo"
 
 # Packages required for bootstrapping
-REQUIRED_PACKAGES="debootstrap debian-archive-keyring qemu-user-static binfmt-support dosfstools rsync bmap-tools whois git"
+REQUIRED_PACKAGES="debootstrap debian-archive-keyring qemu-user-static binfmt-support dosfstools rsync bmap-tools whois git curl"
 MISSING_PACKAGES=""
 
 set +x

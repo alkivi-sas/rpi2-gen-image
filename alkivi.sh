@@ -1,4 +1,5 @@
 #!/bin/bash
+export APT_SERVER="debian.mirrors.ovh.net"
 export DEFLOCAL="en_US.UTF-8"
 export ENABLE_DBUS=true
 export ENABLE_DHCP=true
@@ -11,13 +12,11 @@ export ENABLE_SSHD=true
 export ENABLE_USER=true
 export ENABLE_XORG=false
 export EXPANDROOT=true
-export HOSTNAME="alkivi-rpi"
-export BUILD_KERNEL=true
-export KERNEL_RMSRC=false
+export HOSTNAME="alkivi-raspy"
 export PASSWORD="alkivi123"
 export TIMEZONE="Europe/Paris"
 export USER_NAME=pi
-./rpi2-gen-image.sh
+./rpi3-gen-image.sh
 
 
 
